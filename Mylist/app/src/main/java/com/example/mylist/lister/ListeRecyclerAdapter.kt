@@ -5,24 +5,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylist.lister.Liste
 import com.example.mylist.databinding.ListeLayoutBinding
-
+import com.example.mylist.lister.ListeDepositoryManager
 
 class ListeRecyclerAdapter(private var lister:List<Liste>, private val onListeClicked:(Liste) -> Unit) : RecyclerView.Adapter<ListeRecyclerAdapter.ViewHolder>(){
 
     class ViewHolder(val binding:ListeLayoutBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(liste: Liste, onListeClicked: (Liste) -> Unit) {
             binding.title.text = liste.title
-            binding.content.text = liste.content
-            binding.date.text = liste.date.toString()
 
             binding.card.setOnClickListener{
                 onListeClicked(liste)
-            binding.deleteBtn.setOnClickListener{
 
             }
+            binding.listeDeleteBtn.setOnClickListener{
+                ListeDepositoryManager.instance.removeListe(liste)
             }
         }
+
     }
+
+
 
     override fun getItemCount(): Int = lister.size
 

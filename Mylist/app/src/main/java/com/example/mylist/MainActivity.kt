@@ -11,6 +11,7 @@ import com.example.mylist.databinding.ActivityMainBinding
 import com.example.mylist.lister.ListeDepositoryManager
 import com.example.mylist.lister.ListeDetailsActivity
 import com.example.mylist.lister.ListeRecyclerAdapter
+import com.example.mylist.lister.data.ListeDetails
 
 
 const val EXTRA_LISTE_INFO: String = "com.example.mylist.lister.info"
@@ -25,7 +26,7 @@ class ListeHolder{
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var bidning: Liste
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +45,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.saveBt.setOnClickListener{
             val title = binding.title.text.toString()
-            val content = binding.content.text.toString()
-            val date = binding.date.text.toString().toInt()
 
             binding.title.setText("")
-            binding.content.setText("")
-            binding.date.setText("")
 
-            addListe(title,content,date)
+
+            addListe(title)
 
             val ipm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             ipm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
@@ -60,9 +58,14 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    private fun addListe(title:String, content:String, date:Int){
-        val liste = Liste(title,content,date)
+    private fun addListe(title:String){
+        val liste = Liste(title,details = mutableListOf())
         ListeDepositoryManager.instance.addListe(liste)
+    }
+
+    private fun removeListe(title: String){
+        val liste = Liste(title,details = mutableListOf())
+        ListeDepositoryManager.instance.removeListe(liste)
     }
     private fun onListeClicked(liste:Liste):Unit{
 
