@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
         </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
 
@@ -39,21 +40,6 @@
             android:hint="Tittel"
             />
 
-        <EditText
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Innhold"
-            />
-
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Dato"
-            />
 
         <Button
             android:id="@+id/saveBt"

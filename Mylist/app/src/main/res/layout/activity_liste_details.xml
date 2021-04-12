@@ -4,40 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lister.ListeDetailsActivity">
+    tools:context=".MainActivity">
 
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="119dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="" />
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/addListeDetailsForm"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listeDetailslisting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/addListeDetailsForm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        android:orientation="vertical"
+        android:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        >
+
+        <EditText
+            android:id="@+id/titleDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Tittel"
+            />
+
+
+        <Button
+            android:id="@+id/saveBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
