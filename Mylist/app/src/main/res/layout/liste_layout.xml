@@ -26,6 +26,11 @@
             android:text="Tittel" />
 
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="150dp"
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/listeDeleteBtn"

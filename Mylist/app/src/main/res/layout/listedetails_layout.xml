@@ -20,6 +20,7 @@
 
         <TextView
             android:id="@+id/title"
+            android:layout_marginStart="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -32,9 +33,18 @@
         android:id="@+id/detaildeleteBtn"
         android:layout_width="42dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="300dp"
+        android:layout_marginStart="300dp"
         android:backgroundTint="@color/black"
-        android:text="X"
+        android:text="@string/x"
+
+        />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="42dp"
+        android:layout_height="40dp"
+        android:buttonTint="@color/white"
+
 
         />
 

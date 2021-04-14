@@ -11,11 +11,10 @@ class ListeDepositoryManager {
     var onListerDetails:((List<ListeDetails>) ->Unit)? = null
     var onLister:((List<Liste>)->Unit)? = null
     var onListeUpdate:((liste:Liste) -> Unit)? = null
-
     fun load(){
         listeCollection = mutableListOf(
             Liste("Handleliste", details = (mutableListOf(
-                    ListeDetails("Melk")
+                    ListeDetails("Melk", false)
             ))),
             Liste("Ønskeliste", details = (mutableListOf())),
             Liste("Huskelist", details = (mutableListOf()))
@@ -23,17 +22,19 @@ class ListeDepositoryManager {
         onLister?.invoke(listeCollection)
 
     }
+
     fun updateListe(liste:Liste){
         onListeUpdate?.invoke(liste)
     }
-    fun addlisteDetails(listeDetails:ListeDetails){
+
+    fun addlisteDetails(listeDetails:ListeDetails, liste: Liste){
         ListeHolder.PickedListe?.details?.add(listeDetails)
-        ListeHolder.PickedListe?.let { onListeUpdate?.invoke(it) }
+        onListerDetails?.invoke(liste.details)
 
     }
-    fun removelisteDetails(listeDetails: ListeDetails){
+    fun removelisteDetails(listeDetails: ListeDetails, liste: Liste){
         ListeHolder.PickedListe?.details?.remove(listeDetails)
-        ListeHolder.PickedListe?.let{onListeUpdate?.invoke(it)}
+        onListerDetails?.invoke(liste.details)
     }
 
     fun addListe(liste:Liste){
@@ -44,6 +45,8 @@ class ListeDepositoryManager {
         listeCollection.remove(liste)
         onLister?.invoke(listeCollection)
     }
+
+
     companion object{
         val instance = ListeDepositoryManager()
     }
