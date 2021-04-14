@@ -46,10 +46,8 @@ class ListeDetailsActivity : AppCompatActivity() {
 
     }
     private fun addlisteDetails(title:String){
-        val listeDetails = ListeDetails(title)
-        ListeDepositoryManager.instance.addlisteDetails(listeDetails)
+        val listeDetails = ListeDetails(title,false)
+        ListeHolder.PickedListe?.let { it -> ListeDepositoryManager.instance.addlisteDetails(liste = it,listeDetails = listeDetails) }
     }
-
-
 
 }

@@ -2,7 +2,9 @@ package com.example.mylist.lister
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mylist.ListeHolder
 import com.example.mylist.databinding.ListeLayoutBinding
 import com.example.mylist.databinding.ListedetailsLayoutBinding
 import com.example.mylist.lister.data.ListeDetails
@@ -14,8 +16,16 @@ class ListeDetailsRecyclerAdapter(private var listerDetails:List<ListeDetails>):
         fun bind(listerDetails: ListeDetails) {
             binding.title.text = listerDetails.title.toString()
             binding.detaildeleteBtn.setOnClickListener{
-                ListeDepositoryManager.instance.removelisteDetails(listerDetails)
+                ListeHolder.PickedListe?.let { it ->ListeDepositoryManager.instance.removelisteDetails(liste = it, listeDetails = listerDetails) }
             }
+            binding.checkBox.isChecked = listerDetails.checkBox
+           binding.checkBox.setOnClickListener{
+               listerDetails.checkBox = !listerDetails.checkBox
+               println(listerDetails.checkBox)
+
+
+           }
+
         }
 
     }

@@ -16,6 +16,7 @@ import com.example.mylist.lister.data.ListeDetails
 
 const val EXTRA_LISTE_INFO: String = "com.example.mylist.lister.info"
 const val REQUEST_LISTE_DETAILS:Int = 5123
+val progStatus:Int = 0
 
 class ListeHolder{
     companion object{

@@ -5,4 +5,4 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class ListeDetails(val title:String):Parcelable
+data class ListeDetails(val title:String, var checkBox : Boolean):Parcelable
